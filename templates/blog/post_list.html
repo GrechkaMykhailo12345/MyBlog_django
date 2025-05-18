@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список постів</title>
+</head>
+<body>
+    <h1>Останні пости</h1>
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h2>{{ post.title }}</h2>
+                    <p>Дата публікації: {{ post.published_date }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Немає доступних постів.</p>
+    {% endif %}
+</body>
+</html>
