@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from datetime import timedelta
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -8,6 +10,9 @@ class Post(models.Model):
 
     def __str__(self):
         return super().__str__()
+
+    def published_recently(self):
+        return self.published_date >= timezone.now() - timedelta.days(7)
 
 class Author(models.Model):
     name = models.CharField(max_length=100)
